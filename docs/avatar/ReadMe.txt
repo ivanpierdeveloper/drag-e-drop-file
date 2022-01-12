@@ -1,0 +1,1 @@
+Non eliminare i files default.png e not-image.png da questa cartella.
