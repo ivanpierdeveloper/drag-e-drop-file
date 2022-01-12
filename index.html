@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<!-- <html lang="en"> -->
+<html lang="it">
+
+<head>
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src 'none' ; script-src resource:; "> -->
+    <meta charset="utf-8">
+    <meta http-equiv="content-language" content="IT">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Dati utente">
+    <meta name="author" content="https://ivanpierdeveloper.it">
+    <meta name="keywords" content="app, create-file-csv">
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" sizes="16x16">
+    <link rel="stylesheet" type="text/css" href="docs/css/root.css">
+    <link rel="stylesheet" type="text/css" href="docs/css/my-alert.css">
+    <link rel="stylesheet" href="docs/css/style.css">
+    <link rel="stylesheet" href="docs/css/media-query.css">
+    <link rel="stylesheet" href="docs/css/tooltip.css" type="text/css">
+    <title>Home | Drag & Drop file</title>
+    <style type="text/css">
+        table {
+            table-layout: fixed;
+            width: 100%;
+            word-wrap: break-word;
+            height: auto;
+            color: var(--yellow);
+        }
+        
+        table caption {
+            color: var(--white);
+            text-align: center;
+        }
+        
+        table th {
+            border: 1px solid var(--danger);
+        }
+        
+        table td {
+            border: 1px solid var(--orange);
+            text-align: center;
+            font-size: 8pt;
+        }
+        
+        .tooltip {
+            width: 100%;
+        }
+        
+        .tooltip button {
+            width: 100%;
+        }
+        
+        .tooltip span {
+            font-size: 8pt;
+            padding: 18px;
+        }
+        
+        input[type=file] {
+            color: var(--yellow);
+            cursor: pointer;
+        }
+        
+        #drop_area {
+            padding: 18px;
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 18px;
+            border: 1px solid var(--secondary);
+            border-radius: 8px;
+        }
+        
+        .progress-bar-content {
+            border-radius: 8px;
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 10px;
+            margin-top: 5px;
+        }
+        
+        .list-image {
+            padding: 18px;
+            border: 1px solid var(--white);
+            border-radius: 8px;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 8px;
+            margin-top: 5px;
+            position: relative;
+        }
+        
+        .list-image span {
+            width: 40%;
+            position: absolute;
+            left: 30%;
+            top: 25%;
+        }
+        /*  .progress-bar {
+            width: 100%;
+            height: 10px;
+        } */
+        
+        .area-file {
+            border: 1px solid var(--secondary);
+            border-radius: 8px;
+            box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2), 0 40px 77px 0 rgba(0, 0, 0, 0.22);
+            position: relative;
+        }
+        
+        #file-selector {
+            border: 1px solid red;
+            width: 100%;
+            height: 250px;
+            opacity: 0;
+            border-radius: 8px;
+        }
+        
+        .area-file .didascalia {
+            width: 40%;
+            position: absolute;
+            left: 30%;
+            top: 50%;
+        }
+        
+        .content-button {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="full-screen"></div>
+    <!-- ./full-screen -->
+    <div class="my-alert"></div>
+    <!-- ./my-alert -->
+    <div class="loader"></div>
+    <!-- loader-->
+    <div class="loader-text"></div>
+    <!-- loader-text -->
+    <div class="container">
+        <h1 class="root-text-indianred root-text-align-center root-text-color-blue">drag & drop file</h1>
+        <hr />
+        <div class="content root-text-align-center">
+            <!--<div class="tble-excel root-display-none"></div>-->
+            <!-- The `multiple` attribute lets users select multiple files. -->
+            <!--<input type="file" id="file-selector" multiple> -->
+            <div id="drop_area">
+                <div class="area-file root-bg-color-secondary">
+                    <span class="root-text-color-darkblue didascalia">trascina qui i file o fai click</span>
+                    <input type="file" id="file-selector" accept=".jpg, .jpeg, .png" multiple>
+                </div>
+            </div>
+
+            <!-- ./drop_area -->
+            <div class="list-image ">
+                <span class="root-text-color-secondary">lista image</span>
+            </div>
+            <!-- list-image-->
+            <div class="progress-bar-content">
+                <div class="progress-bar root-bg-text-success-white root-display-none"></div>
+            </div>
+            <div class="content-button">
+                <div class="tooltip">
+                    <span class="tooltiptext">immagini</span>
+                    <button class="btn btn-s btn-save root-display-none" onclick="javascript:letturaFileImage();">salva</button>
+                </div>
+                <!-- ./tooltip -->
+                <div class="tooltip">
+                    <span class="tooltiptext">default</span>
+                    <button class="btn btn-i btn-refresh root-display-none" onclick="javascript:window.location.reload();">ripristina</button>
+                </div>
+                <!-- ./tooltip -->
+            </div>
+            <!-- content-button-->
+        </div>
+        <!-- ./content -->
+    </div>
+    <!-- ./container -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js " defer></script>
+    <!-- ./lib google ajax -->
+    <script lang="javascript " src="docs/js/my-alert.js " defer></script>
+    <!-- my-alert js -->
+    <!-- (defer) non accesso dall'esterno -->
+    <script lang="javascript " src="docs/js/script.js " defer></script>
+    <!-- script js -->
+    <script lang="javascript ">
+    </script>
+</body>
+
+</html>
